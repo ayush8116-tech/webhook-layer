@@ -11,7 +11,7 @@ export const createApp = () => {
     const payload = await c.req.json();
     const conclusion = payload["workflow_run"].conclusion;
 
-    const res = await fetch("/indicate", {
+    const res = await fetch("http://localhost:8000/indicate", {
       method: "post",
       body: conclusion,
     });
