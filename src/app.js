@@ -9,14 +9,13 @@ export const createApp = () => {
 
   app.post("/github-webhook", async (c) => {
     const payload = await c.req.json();
-    console.log(payload);
-    
     const conclusion = payload["workflow_run"].conclusion;
 
-    const res = await fetch("http://localhost:8000/indicate", {
+    const res = await fetch("https://bitter-pumas-buy.loca.lt", {
       method: "post",
       body: conclusion,
     });
+      
     console.log(await res.text());
 
     return c.text("light request sent...");
