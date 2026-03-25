@@ -11,11 +11,11 @@ export const createApp = () => {
     const payload = await c.req.json();
     const conclusion = payload["workflow_run"].conclusion;
 
-    const res = await fetch("https://bitter-pumas-buy.loca.lt", {
+    const res = await fetch("/indicate", {
       method: "post",
       body: conclusion,
     });
-      
+
     console.log(await res.text());
 
     return c.text("light request sent...");
