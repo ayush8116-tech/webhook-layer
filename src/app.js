@@ -7,7 +7,7 @@ export const createApp = () => {
 
   app.use(logger());
 
-  app.get("/github-webhook", async (c) => {
+  app.post("/github-webhook", async (c) => {
     const payload = await c.req.body();
     const conclusion = payload["workflow_run"].conclusion;
 
