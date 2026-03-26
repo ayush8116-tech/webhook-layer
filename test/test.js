@@ -3,6 +3,6 @@ import { describe, it } from "@std/testing/bdd";
 
 describe("simple test suite", () => {
   it("simple test", () => {
-    assertEquals(0, 0);
+    assertEquals(0, 1);
   })
 })
