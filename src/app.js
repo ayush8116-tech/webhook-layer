@@ -9,8 +9,10 @@ export const createApp = () => {
 
   app.post("/github-webhook", async (c) => {
     const payload = await c.req.json();
-    const conclusion = payload["workflow_run"].conclusion;
 
+    const conclusion = payload["workflow_run"].conclusion;
+    console.log(conclusion);
+    
     const res = await fetch("http://localhost:8000/indicate", {
       method: "post",
       body: conclusion,
@@ -21,28 +23,7 @@ export const createApp = () => {
     return c.text("light request sent...");
   });
 
-  
   app.get("*", serveStatic({ root: "./public" }));
-  
+
   return app;
 };
-
-
-
-// app.get("/", async (c) => {
-//   const payload = {
-//     "workflow_run": {
-//       conclusion: "success",
-//     },
-//   };
-  
-//   const res = await fetch("http://localhost:2000/github-webhook", {
-//     method: "post",
-//     body : JSON.stringify(payload),
-//     "content-type": "application/json",
-//   });
-
-//   console.log(await res.text());
-
-//   return c.text("request is going to own server");
-// });
